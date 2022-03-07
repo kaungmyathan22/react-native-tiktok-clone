@@ -30,7 +30,6 @@ const Post = props => {
     });
     setIsLiked(!isLiked);
   };
-
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={onPlayPausePress}>
