@@ -1,4 +1,10 @@
-import {Image, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import Video from 'react-native-video';
 import styles from './styles';
@@ -7,11 +13,22 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
-const Post = ({post}) => {
+const Post = props => {
+  const [post, setPost] = useState(props.post);
   const [pause, setPause] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   const onPlayPausePress = () => {
     setPause(!pause);
+  };
+
+  const onLikePress = () => {
+    const likesToAdd = isLiked ? -1 : 1;
+    setPost({
+      ...post,
+      likes: post.likes + likesToAdd,
+    });
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -30,18 +47,20 @@ const Post = ({post}) => {
       </TouchableWithoutFeedback>
       <View style={styles.uiContainer}>
         <View style={styles.rightContainer}>
-          <View style={styles.profilePictureContainer}>
-            <Image
-              style={styles.profilePicture}
-              source={{
-                uri: post.user.imageUri,
-              }}
+          <Image
+            style={styles.profilePicture}
+            source={{
+              uri: post.user.imageUri,
+            }}
+          />
+          <TouchableOpacity style={styles.iconContainer} onPress={onLikePress}>
+            <AntDesign
+              name="heart"
+              size={30}
+              color={isLiked ? 'white' : 'red'}
             />
-          </View>
-          <View style={styles.iconContainer}>
-            <AntDesign name="heart" size={30} color="white" />
             <Text style={styles.statusLabel}>{post.likes}</Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.iconContainer}>
             <FontAwesome name="commenting" size={30} color="white" />
             <Text style={styles.statusLabel}>{post.comments}</Text>
