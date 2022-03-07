@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {SafeAreaView} from 'react-native';
-import Home from './src/screens/Home';
+import RootNavigation from './src/navigation';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Home />
+    <SafeAreaView style={{flex: 1}}>
+      <RootNavigation />
     </SafeAreaView>
   );
 };
