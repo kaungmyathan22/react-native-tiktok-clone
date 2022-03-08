@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "tiktok",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/home/kaung/workspace/portfolio-projects/mobile-app/tiktok/amplify/backend/api/tiktok/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-03-08T06:33:10.430Z",
+      "keyDescription": ""
+    }
+  }
+}
