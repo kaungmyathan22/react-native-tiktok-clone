@@ -2,7 +2,8 @@ import React from 'react';
 
 import {SafeAreaView} from 'react-native';
 import RootNavigation from './src/navigation';
-// b1afad35-ede6-4a39-bb11-14bde97121bf
+import {withAuthenticator} from 'aws-amplify-react-native';
+
 const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -11,4 +12,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);
