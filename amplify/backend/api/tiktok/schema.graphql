@@ -13,15 +13,13 @@ type Post @model{
   id: ID!
   videoUri: String!
   description: String!
-
-  userID:ID!
-  user: User @hasOne
-  songID:ID!
-  song:Song @hasOne
+  user: User @belongsTo
+  song:Song @belongsTo
 }
 
 type Song @model {
   id: ID!
   name: String!
   imageUri: String
+  posts: [Post] @hasMany
 }

@@ -12,13 +12,10 @@ export const getUser = /* GraphQL */ `
           id
           videoUri
           description
-          userID
-          songID
           createdAt
           updatedAt
           userPostsId
-          postUserId
-          postSongId
+          songPostsId
         }
         nextToken
       }
@@ -54,7 +51,6 @@ export const getPost = /* GraphQL */ `
       id
       videoUri
       description
-      userID
       user {
         id
         username
@@ -65,19 +61,20 @@ export const getPost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name
         imageUri
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       createdAt
       updatedAt
       userPostsId
-      postUserId
-      postSongId
+      songPostsId
     }
   }
 `;
@@ -92,7 +89,6 @@ export const listPosts = /* GraphQL */ `
         id
         videoUri
         description
-        userID
         user {
           id
           username
@@ -100,7 +96,6 @@ export const listPosts = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        songID
         song {
           id
           name
@@ -111,8 +106,7 @@ export const listPosts = /* GraphQL */ `
         createdAt
         updatedAt
         userPostsId
-        postUserId
-        postSongId
+        songPostsId
       }
       nextToken
     }
@@ -124,6 +118,18 @@ export const getSong = /* GraphQL */ `
       id
       name
       imageUri
+      posts {
+        items {
+          id
+          videoUri
+          description
+          createdAt
+          updatedAt
+          userPostsId
+          songPostsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -140,6 +146,9 @@ export const listSongs = /* GraphQL */ `
         id
         name
         imageUri
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }

@@ -12,13 +12,10 @@ export const onCreateUser = /* GraphQL */ `
           id
           videoUri
           description
-          userID
-          songID
           createdAt
           updatedAt
           userPostsId
-          postUserId
-          postSongId
+          songPostsId
         }
         nextToken
       }
@@ -38,13 +35,10 @@ export const onUpdateUser = /* GraphQL */ `
           id
           videoUri
           description
-          userID
-          songID
           createdAt
           updatedAt
           userPostsId
-          postUserId
-          postSongId
+          songPostsId
         }
         nextToken
       }
@@ -64,13 +58,10 @@ export const onDeleteUser = /* GraphQL */ `
           id
           videoUri
           description
-          userID
-          songID
           createdAt
           updatedAt
           userPostsId
-          postUserId
-          postSongId
+          songPostsId
         }
         nextToken
       }
@@ -85,7 +76,6 @@ export const onCreatePost = /* GraphQL */ `
       id
       videoUri
       description
-      userID
       user {
         id
         username
@@ -96,19 +86,20 @@ export const onCreatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name
         imageUri
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       createdAt
       updatedAt
       userPostsId
-      postUserId
-      postSongId
+      songPostsId
     }
   }
 `;
@@ -118,7 +109,6 @@ export const onUpdatePost = /* GraphQL */ `
       id
       videoUri
       description
-      userID
       user {
         id
         username
@@ -129,19 +119,20 @@ export const onUpdatePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name
         imageUri
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       createdAt
       updatedAt
       userPostsId
-      postUserId
-      postSongId
+      songPostsId
     }
   }
 `;
@@ -151,7 +142,6 @@ export const onDeletePost = /* GraphQL */ `
       id
       videoUri
       description
-      userID
       user {
         id
         username
@@ -162,19 +152,20 @@ export const onDeletePost = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      songID
       song {
         id
         name
         imageUri
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       createdAt
       updatedAt
       userPostsId
-      postUserId
-      postSongId
+      songPostsId
     }
   }
 `;
@@ -184,6 +175,18 @@ export const onCreateSong = /* GraphQL */ `
       id
       name
       imageUri
+      posts {
+        items {
+          id
+          videoUri
+          description
+          createdAt
+          updatedAt
+          userPostsId
+          songPostsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -195,6 +198,18 @@ export const onUpdateSong = /* GraphQL */ `
       id
       name
       imageUri
+      posts {
+        items {
+          id
+          videoUri
+          description
+          createdAt
+          updatedAt
+          userPostsId
+          songPostsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -206,6 +221,18 @@ export const onDeleteSong = /* GraphQL */ `
       id
       name
       imageUri
+      posts {
+        items {
+          id
+          videoUri
+          description
+          createdAt
+          updatedAt
+          userPostsId
+          songPostsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
