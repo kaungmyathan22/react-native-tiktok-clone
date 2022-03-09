@@ -5,9 +5,10 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Video from 'react-native-video';
 import styles from './styles';
+import {Storage} from 'aws-amplify';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -17,6 +18,7 @@ const Post = props => {
   const [post, setPost] = useState(props.post);
   const [pause, setPause] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [videoUri, setVideoUri] = useState('');
 
   const onPlayPausePress = () => {
     setPause(!pause);
@@ -30,6 +32,19 @@ const Post = props => {
     });
     setIsLiked(!isLiked);
   };
+
+  const getVideoUri = async () => {
+    if (post.videoUri.startsWith('http')) {
+      setVideoUri(post.videoUri);
+      return;
+    }
+    setVideoUri(await Storage.get(post.videoUri));
+  };
+
+  useEffect(() => {
+    getVideoUri();
+  }, []);
+
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={onPlayPausePress}>
@@ -38,7 +53,7 @@ const Post = props => {
           resizeMode="cover"
           onError={error => console.log(error)}
           source={{
-            uri: post.videoUri,
+            uri: videoUri,
           }}
           repeat={true}
           paused={pause}

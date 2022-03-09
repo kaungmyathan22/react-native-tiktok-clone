@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "tiktok90eeceb8_identitypool_90eeceb8",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "tiktok90eeceb8",
     "userPoolName": "tiktok90eeceb8_userpool_90eeceb8",
     "autoVerifiedAttributes": [
@@ -40,6 +40,20 @@
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": []
   }
 }

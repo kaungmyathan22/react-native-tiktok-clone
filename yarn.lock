@@ -7586,7 +7586,7 @@ react-native-gesture-handler@^2.3.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-react-native-get-random-values@^1.4.0:
+react-native-get-random-values@^1.4.0, react-native-get-random-values@^1.7.2:
   version "1.7.2"
   resolved "https://registry.npmjs.org/react-native-get-random-values/-/react-native-get-random-values-1.7.2.tgz"
   integrity sha512-28KRYGpIG/upV8+k/qFA+TwGW+yGjmtOHaCduJHpOQK1QUTyhiA6E2IgL4UvvU2dybeCTYFmUi9wcEQ0GiWe5g==
@@ -7605,6 +7605,11 @@ react-native-screens@^3.13.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-uuid@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-uuid/-/react-native-uuid-2.0.1.tgz#ed4e2dfb1683eddb66967eb5dca140dfe1abddb9"
+  integrity sha512-cptnoIbL53GTCrWlb/+jrDC6tvb7ypIyzbXNJcpR3Vab0mkeaaVd5qnB3f0whXYzS+SMoSQLcUUB0gEWqkPC0g==
 
 react-native-vector-icons@^9.1.0:
   version "9.1.0"
